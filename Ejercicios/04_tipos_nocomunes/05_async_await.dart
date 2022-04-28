@@ -13,6 +13,7 @@ main() async{
 
     //leerArchivo(path).then((value) => print(value));
 
+    //Esperar a que termine de procesar el archivo
     String personas = await leerArchivo(path);
     print(personas);
 
