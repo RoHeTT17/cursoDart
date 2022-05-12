@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'persona.dart';
+
 //Recibe un String y retorna una instancia (objeto) de la clase 
 ReqResponse reqResponseFromJson(String str) => ReqResponse.fromJson(json.decode(str));
 
@@ -16,7 +18,7 @@ class ReqResponse {
     int? perPage;
     int? total;
     int? totalPages;
-    List<Datum>? data;
+    List<Persona>? data;
     Support? support;
 
     ReqResponse({
@@ -34,7 +36,7 @@ class ReqResponse {
         perPage:    json["per_page"] == null ? null : json["per_page"],
         total:      json["total"] == null ? null : json["total"],
         totalPages: json["total_pages"] == null ? null : json["total_pages"],
-        data:       json["data"] == null ? null : List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data:       json["data"] == null ? null : List<Persona>.from(json["data"].map((x) => Persona.fromJson(x))),
         support:    json["support"] == null ? null : Support.fromJson(json["support"]),
     );
 
@@ -45,40 +47,6 @@ class ReqResponse {
         "total_pages": totalPages == null ? null : totalPages,
         "data":        data == null ? null : List<dynamic>.from(data!.map((x) => x.toJson())),
         "support":     support == null ? null : support!.toJson(),
-    };
-}
-
-class Datum {
-
-    int? id;
-    String? email;
-    String? firstName;
-    String? lastName;
-    String? avatar;
-
-
-    Datum({
-        this.id,
-        this.email,
-        this.firstName,
-        this.lastName,
-        this.avatar,
-    });
-
-    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        id:        json["id"] == null ? null : json["id"],
-        email:     json["email"] == null ? null : json["email"],
-        firstName: json["first_name"] == null ? null : json["first_name"],
-        lastName:  json["last_name"] == null ? null : json["last_name"],
-        avatar:    json["avatar"] == null ? null : json["avatar"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "id":        id == null ? null : id,
-        "email":     email == null ? null : email,
-        "first_name":firstName == null ? null : firstName,
-        "last_name": lastName == null ? null : lastName,
-        "avatar":    avatar == null ? null : avatar,
     };
 }
 
