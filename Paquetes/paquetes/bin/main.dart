@@ -5,10 +5,12 @@
 
 import 'package:paquetes/paquetes.dart' as paquetes;
 
-
 void main(List<String> arguments) {
 
-     paquetes.getReqResp_service();
+     //paquetes.getReqResp_service();
+
+      print('********pais********');
+      paquetes.getDataPais();
 
     //Forma 1
     //final url = Uri.parse('https://reqres.in/api/users?page=2') ;
